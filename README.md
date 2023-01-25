@@ -1,4 +1,4 @@
-#database-auth
+# Simple PHP Authentication System with Database
 
 ## Table of contents
 * [General info](#general-info)
