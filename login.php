@@ -15,10 +15,12 @@ if (isset($_POST['login'])) {
     if (!$userEmail && !$userPassword) {
         $validate['required'] = 'This is required!';
     } else {
-        $sql = "SELECT * FROM user WHERE `email` = '$userEmail' and `password` = '$userPassword'";
-        $result = mysqli_query($connection, $sql);
+        $sql = "SELECT * FROM user WHERE email = '$userEmail' and password = '$userPassword'";
+        //$result = mysqli_query($connection, $sql);
+        $result = $conn->query($sql);
+        $data = $result->fetch(PDO::FETCH_ASSOC);
 
-        if (mysqli_fetch_assoc($result)) {
+        if ($data) {
             $_SESSION['authentication'] = true;
             route('home.php');
         } else {

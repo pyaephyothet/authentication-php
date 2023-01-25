@@ -23,8 +23,11 @@ if (isset($_POST['register'])) {
     }
 
     if (count($validate) == 0) {
-        $sql = "INSERT INTO user (`name`, `email`, `password`, `confirm`) VALUES ('$name', '$email', '$password', '$confirm_password')";
-        $result = mysqli_query($connection, $sql);
+        $sql = "INSERT INTO user (name, email, password, confirm) VALUES ('$name', '$email', '$password', '$confirm_password')";
+        $result = $conn->query($sql);
+
+        //$sql = "INSERT INTO user (`name`, `email`, `password`, `confirm`) VALUES ('$name', '$email', '$password', '$confirm_password')";
+        //$result = mysqli_query($connection, $sql);
 
         if ($result) {
             route('login.php');
