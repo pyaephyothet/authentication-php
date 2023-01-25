@@ -9,7 +9,7 @@ if (isset($_POST['register'])) {
 
     $validate = [];
 
-    if (!$name && !$email && !$password && !$confirm_password) {
+    if (!$name || !$email || !$password || !$confirm_password) {
         $validate['required'] = 'This is required!';
     } else {
         $status = checkStrongPassword($password);
@@ -23,10 +23,15 @@ if (isset($_POST['register'])) {
     }
 
     if (count($validate) == 0) {
-        $sql = "INSERT INTO user (`name`, `email`, `password`, `confirm`) VALUES ('$name', '$email', '$password', '$confirm_password')";
-        $result = mysqli_query($connection, $sql);
+        $pdo = $pdo->prepare('INSERT INTO user (name, email, password, confirm) VALUES (:fname, :fmail, :fpw, :fcon)');
+        $pdo->execute([
+            'fname' => $name,
+            'fmail' => $email,
+            'fpw' => $password,
+            'fcon' => $confirm_password,
+        ]);
 
-        if ($result) {
+        if ($pdo) {
             route('login.php');
         }
 
