@@ -23,12 +23,11 @@ if (isset($_POST['register'])) {
     }
 
     if (count($validate) == 0) {
-        $pdo = $pdo->prepare('INSERT INTO user (name, email, password, confirm) VALUES (:fname, :fmail, :fpw, :fcon)');
+        $pdo = $pdo->prepare('INSERT INTO user (name, email, password) VALUES (:fname, :fmail, :fpw)');
         $pdo->execute([
             'fname' => $name,
             'fmail' => $email,
             'fpw' => $password,
-            'fcon' => $confirm_password,
         ]);
 
         if ($pdo) {
