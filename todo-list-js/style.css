@@ -90,11 +90,15 @@ form button {
     border-radius: 1rem;
 }
 
-.task li {
+.task input {
     flex: 1;
     min-width: 30rem;
     max-width: 50rem;
     overflow: hidden;
+    padding: 1rem 0.5rem;
+    border: 0;
+    background: none;
+    font-size: 1rem;
 }
 
 .trash-btn,
@@ -174,9 +178,13 @@ select {
     color: #1D1C39;
 }
 
-/*.all-btn:hover, .add-btn:hover {
-    border: 0.3rem solid #1D1C39;
-}*/
+.edit-btn {
+    padding: 1.1rem 1rem;
+        border: none;
+    background: grey;
+    font-weight: 700;
+
+}
 
 .fas:hover,
 button:hover .fas {
